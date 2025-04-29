@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/form.css">
+</head>
+
+<body>
+    <div class="form-background">
+        <form action="/users/create" method="post" id="registerForm">
+            <div class="form-innerground">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <label for="pass">Password</label>
+                <input type="password" id="pass" name="password">
+                <label for="confirm-pass">Confirm Password</label>
+                <input type="password" id="confirm-pass">
+                <input type="submit" id="submit-btn">
+                <p id="links">you already have an account? <a href="/users/login">Sign in</a></p>
+            </div>
+        </form>
+    </div>
+    <script src="/javascripts/confirmPass.js"></script>
+</body>
+
+</html>

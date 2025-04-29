@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="/stylesheets/checkout.css" />
+</head>
+<body>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+
+    <div class="checkout-content">
+      <form class="billing-form" action="/placeorder" method="post">
+        <h2>Billing Details</h2>
+
+        <label>
+          Address:
+          <input type="text" placeholder="123 Main St" required name="address"/>
+        </label>
+
+        <label>
+          City:
+          <input type="text" placeholder="Your City" required name="city"/>
+        </label>
+
+        <label>
+          Postal Code:
+          <input type="text" placeholder="123456" required name="postal"/>
+        </label>
+        <% const result=data.reduce(function(prev, next) { return prev+next }) %>
+        <% let total = result+20 %>
+        <label>
+          Total:
+          <input type="text" placeholder="<%= total %>" value="<%= total %>" disabled required name="total"/>
+        </label>
+        <input type="submit" value="Place Order" class="place-order-btn">
+      </form>
+
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <ul>
+          <% userData.forEach(function(data) { %>
+          <li>
+            <span><%= data.name %></span>
+            <span>₹<%= data.price %></span>
+          </li>
+          <% }) %>
+          <li class="total">
+            <strong>Total:</strong>
+            <strong>₹<%= total %></strong>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>

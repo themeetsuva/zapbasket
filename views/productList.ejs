@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Product List</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/header.css">
+  <link rel="stylesheet" href="/stylesheets/productList.css">
+</head>
+
+<body>
+  <header>
+    <h1>ControllPannel</h1>
+    <div class="nav">
+      <a href="/owners/products/new">Create Product</a>
+    </div>
+  </header>
+  <div class="admin-panel">
+    <h2>Product List</h2>
+    <div class="product-list">
+      <% productData.forEach(function(data) { %>
+        <div class="product-item">
+          <img src="data:image/jpeg;base64,<%= data.image.toString('base64') %>" alt="product-image"
+            class="product-image" />
+          <div class="product-info">
+            <span class="product-name">
+              <%= data.name %>
+            </span>
+            <span class="product-details">Price: ₹<%= data.price %> | Weight: <%= data.weight %></span>
+          </div>
+          <button class="delete-btn"><a href="/owners/products/list/<%= data.id %>">Delete</a></button>
+        </div>
+        <% }) %>
+    </div>
+  </div>
+</body>
+
+</html>

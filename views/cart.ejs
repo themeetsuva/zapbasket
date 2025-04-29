@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="/stylesheets/cart.css">
+</head>
+
+<body>
+  <div class="cart-container">
+    <h1>Your Shopping Cart</h1>
+
+    <div class="cart-items">
+      <% userData.forEach(function(data) { %>
+        <div class="cart-item">
+          <img src="data:image/jpeg;base64,<%= data.image.toString('base64') %>" alt="Product Image">
+          <div class="item-details">
+            <h2>
+              <%= data.name %>
+            </h2>
+            <p>₹<%= data.price %>
+            </p>
+          </div>
+          <div class="item-actions">
+            <button class="remove-btn"><a href="/cart/delete/<%= data._id %>">Remove</a></button>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <div class="cart-summary">
+
+      <h3>Cart Summary</h3>
+      <% const result=data.reduce(function(prev, next) { return prev+next }) %>
+        <p>Subtotal: <span>
+          ₹<%= result %>
+          </span></p>
+        <p>Shipping: <span>₹20</span></p>
+        <p><strong>Total: <span>
+              <% let total = result+20 %>
+              ₹<%= total %>
+            </span></strong></p>
+        <button class="checkout-btn"><a href="/checkout">Proceed to Checkout</a></button>
+    </div>
+  </div>
+</body>
+
+</html>

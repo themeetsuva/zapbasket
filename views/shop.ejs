@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/shop.css">
+</head>
+
+<body>
+    <header>
+        <h1>ZapBasket</h1>
+        <div class="nav">
+            <a href="/cart">Cart</a>
+            <a href="/users/logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-grid">
+            <% products.forEach(function(data) { %>
+                <div class="product-card">
+                    <img src="data:image/jpeg;base64,<%= data.image.toString('base64') %>" alt="Product 1">
+                    <div class="product-info">
+                        <h3>
+                            <%= data.name %>
+                        </h3>
+                        <p>Weight: <%= data.weight %>
+                        </p>
+                        <div class="price-and-add">
+                            <span class="price">₹<%= data.price %></span>
+                            <button id="count-btn"><a href="/cart/<%= data.id %>">add</a></button>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
+
+</html>
