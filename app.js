@@ -23,7 +23,7 @@ app.use("/", shopRoute);
 app.use(ownerValidate);
 app.use("/owners", ownerRouter);
 
-mongoose.connect(process.env.DATABASE_URL).then((res) => {
+mongoose.connect(process.env.MONGO_URI).then((res) => {
     console.log("Database Connected");
     app.listen(process.env.PORT);
 });
