@@ -25,5 +25,5 @@ app.use("/owners", ownerRouter);
 
 mongoose.connect(process.env.DATABASE_URL).then((res) => {
     console.log("Database Connected");
-    app.listen("3000");
+    app.listen(process.env.PORT);
 });
